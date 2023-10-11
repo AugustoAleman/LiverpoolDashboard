@@ -13,8 +13,9 @@ data = pd.DataFrame({
     'Value': [20, 40, 10, 25, 30]
 })
 
-# Initialize the Dash app
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, title='Liverpool Human Analytics')  # Set the title
+app.title = 'Liverpool Human Analytics'  # Alternate way to set the title
+app.favicon = 'LiverpoolDashboard/First-Dashboard/assets/src/logo-pequenio.png'
 
 # Define the app layout
 app.layout = html.Div([
