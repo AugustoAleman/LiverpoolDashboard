@@ -1,0 +1,60 @@
+/* Style for the navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.logo {
+    height: 40px;
+}
+
+.nav-options {
+    display: flex;
+}
+
+.nav-option {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+}
+
+/* Style for the two-column layout */
+.two-column-layout {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.left-column {
+    width: 30%;
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.subtitle {
+    font-size: 18px;
+}
+
+.description {
+    font-size: 14px;
+}
+
+/* Add more CSS rules for your specific customization needs */
+
+/* Style for the right column */
+.right-column {
+    width: 70%;
+    padding: 20px;
+}
+
+.chart-title {
+    font-size: 18px;
+}
+
+/* Additional CSS customization for charts if needed */
