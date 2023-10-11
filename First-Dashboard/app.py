@@ -5,6 +5,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 from datetime import datetime
 import pandas as pd
+from modules import util
 
 # Sample data for the charts
 data = pd.DataFrame({
@@ -61,17 +62,24 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 html.Div([
-                    html.Div('Chart 1 Title', className='chart-title'),
+                    html.Div('Tendencia de renuncias', className='chart-title'),
                     html.Hr(className='divider'),  # Horizontal line
                     dcc.Graph(
-                        figure=px.bar(data, x='Category', y='Value', title='Bar Chart'),
+                        figure=util.resignationOverMonnths(),
                     ),
                 ], className = 'chart-container'),
                 html.Div([
-                    html.Div('Chart 2 Title', className='chart-title'),
+                    html.Div('Renuncias en Sectores Estrátegicos', className='chart-title'),
                     html.Hr(className='divider'),
                     dcc.Graph(
-                        figure=px.pie(data, names='Category', values='Value', title='Pie Chart'),
+                        figure=util.resignedPerArea(),
+                    ),
+                ], className = 'chart-container'),
+                html.Div([
+                    html.Div('Renuncias por Sector en el tiempo', className='chart-title'),
+                    html.Hr(className='divider'),
+                    dcc.Graph(
+                        figure=util.areasOverYears(),
                     ),
                 ], className = 'chart-container'),
                 # Add more charts here as needed
