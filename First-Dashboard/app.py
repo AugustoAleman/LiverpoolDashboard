@@ -2,36 +2,20 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import plotly.express as px
 from datetime import datetime
-import pandas as pd
 from modules import util
+from components import footer, navbar
 
-# Sample data for the charts
-data = pd.DataFrame({
-    'Category': ['A', 'B', 'C', 'D', 'E'],
-    'Value': [20, 40, 10, 25, 30]
-})
 
 app = dash.Dash(__name__, title='Liverpool Human Analytics')  # Set the title
 app.title = 'Liverpool Human Analytics'  # Alternate way to set the title
-app.favicon = 'LiverpoolDashboard/First-Dashboard/assets/src/logo-pequenio.png'
+app.favicon = '../assets/src/logo-pequenio.png'
 
 # Define the app layout
 app.layout = html.Div([
-    html.Link(href="/assets/styles.css", rel="stylesheet"),
+    html.Link(href="assets\src\liverpool-logo.png", rel="stylesheet"),
     # Navbar with logo and options
-    html.Div([
-        html.Img(src='assets/src/liverpool-logo.png', className='logo'),  # Customize logo path
-        html.Div([
-            html.Div(html.A('INICIO'), style = {'text-decoration': 'underline'}, className='nav-option'),
-            html.Div(html.A('USUARIOS'), className='nav-option'),
-            html.Div(html.A('PANEL DE CONTROL'), className='nav-option'),
-            html.Div(html.Button('SALIR', className='rounded-button')),
-        ], className='nav-options')
-
-    ], className='navbar'),
-    
+    navbar.navbar(),
     # Two-column layout
     html.Div([
         # Left column
@@ -54,9 +38,13 @@ app.layout = html.Div([
             html.H4('Selecciona un periodo', className='picker-description'),
             dcc.DatePickerRange(
                 id='date-picker',
-                start_date=datetime(2023, 1, 1),
-                end_date=datetime(2023, 12, 31),
+                start_date=datetime(2019, 1, 1),
+                end_date=datetime(2023, 1, 31),
             ),
+            html.H4('Selecciona ubicaciones', className='picker-description'),
+            html.Div([
+                dcc.Dropdown(['Liverpool Polanco', 'Suburbia Coapa', 'CeDis Nacional'], 'Liverpool Polanco', multi=True)
+            ]),
         ], className='left-column', style={'width': '30%'}),
         
         # Right column with charts
@@ -87,6 +75,7 @@ app.layout = html.Div([
             ], className='charts-column')
         ], className='right-column', style={'width': '70%'}),
     ], className='two-column-layout'),
+    footer.footer()
 ])
 
 # Define callback function(s) here if needed

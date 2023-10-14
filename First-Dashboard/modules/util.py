@@ -54,7 +54,7 @@ title_colors = {'Title': '#CD137A',
 
 def getLogo(x, y, sizex, sizey):
     logo = [dict(
-        source='/Users/augusto/Desktop/Liverpool/LiverpoolDashboard/First-Dashboard/assets/src/logo-pequenio.png',
+        source='../assets/src/logo-pequenio.png',
         xref='paper', yref='paper',
         x=x, 
         y=y,
@@ -178,7 +178,7 @@ file_path = '../data/'
 
 #Carga de archivo
 def loadCSV():
-    demographic_resigned = '/Users/augusto/Desktop/Liverpool/LiverpoolDashboard/First-Dashboard/data/Demograficos-Renuncias-Liverpool.csv'
+    demographic_resigned = '.\data\Demograficos-Renuncias-Liverpool.csv'
     df_demographic_resigned = pd.read_csv(demographic_resigned)
     df_demographic_resigned = setCustomIndex(df_demographic_resigned, 0)
 
@@ -269,7 +269,7 @@ def resignationOverMonnths():
 
     fig.update_traces(line=dict(color = colors[0]))
 
-    fig.layout.images = getLogo(0.0, 1.015, 0.21, 0.21)
+    fig.layout.images = getLogo(0.05, 1.0, 0.195, 0.195)
 
     #   Para solo mostrar enero y Julio
     fig.update_xaxes(
